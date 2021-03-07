@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Chat";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <div class="row"><div class="col-md-12"><div id="clientelistodisplayo" class="list-group"></div></div></div>
+            <div class="row invisible"><div class="col-md-12"><input id="recipient" /></div></div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group mb-3 input-group-lg">
+                        <input id="sendMessage" type="text" class="form-control" placeholder="Message" aria-label="With textarea" />
+                        <button class="btn btn-success" id="sendButton" type="submit" disabled>Send to Everyone</button>
+                    </div>
+                    <div class="list-group" id="communicationdisplay"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(event) {
+            Swal.fire({
+                title: 'Loading...',
+                html: 'Connecting to server',
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    var xhrsocketurl = new XMLHttpRequest();
+                    xhrsocketurl.onreadystatechange = function(){
+                        if (xhrsocketurl.readyState === 4){
+                            var returnsocketurl = JSON.parse(xhrsocketurl.responseText);
+                            if (location.protocol == 'https:') {
+                                returnsocketurl = "wss://" + returnsocketurl;
+                            }
+                            else
+                            {
+                                returnsocketurl = "ws://" + returnsocketurl;
+                            }
+                            document.getElementById("connectionUrl").innerHTML = returnsocketurl;
+                            connekSucket(returnsocketurl);
+                        }
+                    };
+                    xhrsocketurl.open('GET', '/Chat/GetWebSocketURL');
+                    xhrsocketurl.send();
+                }
+            });
+        });
+        document.getElementById("sendButton").onclick = function () {
+            SendMenssahe();
+        };
+        document.getElementById("sendMessage").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                SendMenssahe();
+            }
+        });
+    </script>
+}

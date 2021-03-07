@@ -1,0 +1,63 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+<h1 class="text-dark">
+    @Model.ErrorType
+    @if (Model.ErrorType == "401")
+    {
+        <span>
+            - Unauthorized Access.
+        </span>
+    }
+    @if (Model.ErrorType == "403")
+    {
+        <span>
+            - Forbidden Access.
+        </span>
+    }
+    @if (Model.ErrorType == "404")
+    {
+        <span>
+            - Page not Found
+        </span>
+    }
+    @if (Model.ErrorType == "405")
+    {
+        <span>
+            - Page not Allowed
+        </span>
+    }
+    @if (Model.ErrorType == "400")
+    {
+        <span>
+            - Bad Request
+        </span>
+    }
+</h1>
+<h3 class="text-dark">
+    @if (Model.ErrorType == "401")
+    {
+        <span>
+            You dont have access to page this page. Please login your account.
+        </span>
+    }
+    @if (Model.ErrorType == "403")
+    {
+        <span>
+            Your account doesnt have enough authorization to access this page.
+        </span>
+    }
+    @if (Model.ErrorType == "404")
+    {
+        <span>
+            The page you are looking for is doesnt exists.
+        </span>
+    }
+    @if (Model.ErrorType == "405")
+    {
+        <span>
+            This is not a webpage.
+        </span>
+    }
+</h3>

@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "jsdelivr",
+  "libraries": [
+    {
+      "library": "bootstrap@5.0.0-beta2",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "sweetalert2@10.14.1",
+      "destination": "wwwroot/lib/sweetalert2/"
+    }
+  ]
+}
