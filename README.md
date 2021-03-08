@@ -1,6 +1,7 @@
-# .netcore3.1-websocket-chat
+# Text Chat Web Application
 
-Text chat web application 
+Text chat web application with random username generated
+
 built using .net core 3.1 and javascript
 
 -----------------
