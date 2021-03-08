@@ -1,27 +1,31 @@
 # .netcore3.1-websocket-chat
 
-Chat web application using .net core 3.1 and javascript
+Text chat web application 
+built using .net core 3.1 and javascript
 
-## live demo
+-----------------
+
+## Demo
 ```
 https://chat.sermeno.xyz/
 ```
 
-## run using docker
+-----------------
+
+## Run using docker
+change the port 5001 if neccessary
 ```
 docker run -p 5001:80 -d --restart unless-stopped allen456/chatwebsocket:latest
 ```
 open localhost:5001
 
-## run using .net core 3.1 sdk
+-----------------
+
+## Run using .net core 3.1 sdk and vscode
 
 ```
 dotnet run
 ```
 
-## publishing to iis
+-----------------
 
-```
-dotnet publish -c Release -o ./publish
-```
-copy all files in /publish folder to iis directory
