@@ -2,7 +2,7 @@
 
 Text chat web application with random username generated
 
-built using .net core 3.1 and javascript
+built using .net core 3.1 and javascript websockets
 
 -----------------
 
